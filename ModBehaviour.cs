@@ -1,6 +1,4 @@
-﻿using JmcModLib.Config;
-using JmcModLib.Config.UI;
-using JmcModLib.Core;
+﻿using JmcModLib.Core;
 using JmcModLib.Utils;
 using MoreBtcMiner.Core;
 using MoreBtcMiner.Patches;

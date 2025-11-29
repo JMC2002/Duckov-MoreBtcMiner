@@ -10,7 +10,7 @@ namespace MoreBtcMiner
     public static class MinerManager
     {
         // 活跃矿机列表
-        public static List<BitcoinMiner> Miners = new List<BitcoinMiner>();
+        public static List<BitcoinMiner> Miners = [];
 
         // 缓存私有结构体类型
         public static readonly Type Type_SaveData = typeof(BitcoinMiner).GetNestedType("SaveData", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
@@ -43,7 +43,7 @@ namespace MoreBtcMiner
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 // 
                 // ModLogger.Warn($"Failed to get Grid Key: {ex.Message}");

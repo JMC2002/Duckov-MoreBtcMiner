@@ -1,6 +1,6 @@
-﻿using MoreBtcMiner.Core;
-using HarmonyLib;
+﻿using HarmonyLib;
 using JmcModLib.Utils;
+using MoreBtcMiner.Core;
 using System.Reflection;
 
 namespace MoreBtcMiner.Patches

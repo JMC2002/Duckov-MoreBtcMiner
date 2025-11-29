@@ -1,8 +1,7 @@
-﻿using HarmonyLib;
-using UnityEngine;
-using Duckov.Bitcoins;
-using Duckov.UI;
+﻿using Duckov.Bitcoins;
+using HarmonyLib;
 using JmcModLib.Utils;
+using UnityEngine;
 
 namespace MoreBtcMiner.Patches
 {

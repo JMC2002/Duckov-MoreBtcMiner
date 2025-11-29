@@ -5,8 +5,6 @@ using HarmonyLib;
 using JmcModLib.Config;
 using JmcModLib.Config.UI;
 using JmcModLib.Reflection;
-using MoreBtcMiner.Core;
-using UnityEngine;
 
 namespace MoreBtcMiner.Patches
 {
