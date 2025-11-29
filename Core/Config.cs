@@ -3,7 +3,7 @@ using JmcModLib.Config.UI;
 
 namespace MoreBtcMiner.Core
 {
-    public static class Setting
+    public static class ModSettings
     {
         // 定义配置项
         // 参数说明：[显示名称, 描述(Tooltip), 分组]
