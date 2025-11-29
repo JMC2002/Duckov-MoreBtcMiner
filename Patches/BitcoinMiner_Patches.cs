@@ -1,23 +1,20 @@
-﻿using Duckov.Bitcoins;
-using Duckov.UI;
+﻿using System;
 using HarmonyLib;
-using ItemStatsSystem.Data;
+using UnityEngine;
+using Duckov.Bitcoins;
+using Duckov.UI;
 using JmcModLib.Reflection;
 using JmcModLib.Utils;
 using Saves;
-using System;
-using UnityEngine;
+using ItemStatsSystem.Data;
 
 namespace MoreBtcMiner
 {
-    using Duckov.Bitcoins;
-    using Duckov.Buildings;
     using HarmonyLib;
+    using Duckov.Buildings;
+    using Duckov.Bitcoins;
     using JmcModLib.Reflection;
     using JmcModLib.Utils;
-    using System.Collections;
-    using System.Collections.Generic;
-    using System.Reflection;
     using UnityEngine;
 
     namespace MoreBtcMiner
@@ -128,11 +125,10 @@ namespace MoreBtcMiner
         [HarmonyPrefix]
         public static bool OnDestroy_Prefix(BitcoinMiner __instance)
         {
-            // 1. 从管理器移除引用
             MinerManager.Miners.Remove(__instance);
+            ModLogger.Trace($"[OnDestroy] Miner removed. Total miners: {MinerManager.Miners.Count}");
 
-            // 2. 清理保存事件监听 (防止内存泄漏)
-            var methodSave = typeof(BitcoinMiner).GetMethod("Save", BindingFlags.Instance | BindingFlags.NonPublic);
+            var methodSave = typeof(BitcoinMiner).GetMethod("Save", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic);
             if (methodSave != null)
             {
                 var del = (Action)Delegate.CreateDelegate(typeof(Action), __instance, methodSave);
@@ -140,12 +136,9 @@ namespace MoreBtcMiner
                 eventInfo.RemoveEventHandler(null, del);
             }
 
-            // 3. 这里的关键是：
-            // 我们不再尝试 SendToPlayer (避免报错)
-            // 我们也不再 Save 空数据 (保留原存档)
-
             return false;
         }
+
 
         // =======================================================
         // Save: 使用参数数组精确查找重载
@@ -157,8 +150,8 @@ namespace MoreBtcMiner
             Type tMiner = typeof(BitcoinMiner);
             Type tSaveData = MinerManager.Type_SaveData;
 
-            bool loading = (bool)MemberAccessor.Get(tMiner, "Loading").GetValue<BitcoinMiner, bool>(__instance);
-            bool init = (bool)MemberAccessor.Get(tMiner, "Initialized").GetValue<BitcoinMiner, bool>(__instance);
+            bool loading = (bool)MemberAccessor.Get(tMiner, "Loading").GetValue(__instance);
+            bool init = (bool)MemberAccessor.Get(tMiner, "Initialized").GetValue(__instance);
 
             if (loading || !init) return false;
 
@@ -205,47 +198,37 @@ namespace MoreBtcMiner
         {
             Type tMiner = typeof(BitcoinMiner);
             Type tSaveData = MinerManager.Type_SaveData;
+
+            // 只获取基于位置的唯一 Key
             string uniqueKey = MinerManager.GetUniqueKey(__instance);
 
-            // 1. 尝试读取该位置的存档
+            // 1. 如果有 MOD 存档，就读取
             if (SavesSystem.KeyExisits(uniqueKey))
             {
                 try
                 {
-                    // 读取数据
                     var loadMethod = MethodAccessor.Get(typeof(SavesSystem), "Load", new Type[] { typeof(string) });
                     object dataStruct = loadMethod.MakeGeneric(tSaveData).Invoke(null, uniqueKey);
 
-                    // 这里的安检依然保留，防止万一读到坏档
-                    var accItemData = MemberAccessor.Get(tSaveData, "itemData");
-                    object valItemData = accItemData.GetValue(dataStruct);
+                    var setupMethod = MethodAccessor.Get(tMiner, "Setup", new[] { tSaveData });
+                    setupMethod.Invoke(__instance, dataStruct);
 
-                    if (valItemData == null)
-                    {
-                        // 如果读出来是坏的，就重置
-                        var initMethod = MethodAccessor.Get(tMiner, "Initialize");
-                        initMethod.Invoke(__instance);
-                    }
-                    else
-                    {
-                        // 数据正常，加载旧显卡
-                        var setupMethod = MethodAccessor.Get(tMiner, "Setup", new[] { tSaveData });
-                        setupMethod.Invoke(__instance, dataStruct);
-                        // ModLogger.Info($"[Load] Restored miner data at {uniqueKey}");
-                    }
+                    // ModLogger.Info($"Loaded miner: {uniqueKey}");
                 }
                 catch (Exception ex)
                 {
-                    ModLogger.Error($"[Load] Error loading {uniqueKey}, resetting.", ex);
+                    ModLogger.Error($"Load Failed: {uniqueKey}", ex);
+                    // 如果读档失败，为了防止卡死，尝试初始化一个新的
                     var initMethod = MethodAccessor.Get(tMiner, "Initialize");
                     initMethod.Invoke(__instance);
                 }
             }
+            // 2. 如果没有 MOD 存档，直接初始化为新矿机 (不管原版有没有数据)
             else
             {
-                // 2. 没有存档 -> 新矿机
                 var initMethod = MethodAccessor.Get(tMiner, "Initialize");
                 initMethod.Invoke(__instance);
+                // ModLogger.Info($"Initialized new miner: {uniqueKey}");
             }
 
             return false;

@@ -1,12 +1,18 @@
-﻿using MoreBtcMiner.Core;
-using MoreBtcMiner.Patches;
+﻿using JmcModLib.Config;
+using JmcModLib.Config.UI;
 using JmcModLib.Core;
 using JmcModLib.Utils;
+using MoreBtcMiner.Core;
+using MoreBtcMiner.Patches;
 
 namespace MoreBtcMiner
 {
     public class ModBehaviour : Duckov.Modding.ModBehaviour
     {
+        [UIIntSlider(0, 10)]
+        [Config("矿机建造上限2")]
+        public static int MaxMinerCount = 2; // 默认值设为 10
+
         private readonly HarmonyHelper harmonyHelper = new($"{VersionInfo.Name}");
         private void OnEnable()
         {
