@@ -23,16 +23,10 @@ namespace MoreBtcMiner.Core
                        .RegisterLogger(uIFlags: LogConfigUIFlags.All)
                        .Done();
             harmonyHelper.OnEnable();
-            // BackupInvokerExpansionPatch.ReapplyAll(); // 没写好热启动，算了就这样凑合用吧，反正也没几个人用
-            SaveSlotActionButton.ReapplyAll();
-            // L10n.LanguageChanged += SaveSlotSelectionButtonPatch.OnLanguegeChanged;
         }
 
         protected override void OnBeforeDeactivate()
         {
-            // L10n.LanguageChanged -= SaveSlotSelectionButtonPatch.OnLanguegeChanged;
-            SaveSlotExpansionPatch.Cleanup();
-            SaveSlotActionButton.Cleanup();
             ModLogger.Info("Mod 已禁用，配置已保存");
         }
     }
