@@ -1,34 +1,28 @@
-﻿using JmcModLib.Core;
-using JmcModLib.Utils;
+﻿using Duckov.Modding;
 using MoreBtcMiner.Core;
-using MoreBtcMiner.Patches;
+using UnityEngine;
 
 namespace MoreBtcMiner
 {
-    public class ModBehaviour : Duckov.Modding.ModBehaviour
+    public class ModBehaviour : DependencyModLoader
     {
-        private readonly HarmonyHelper harmonyHelper = new($"{VersionInfo.Name}");
-        private void OnEnable()
+        protected override string[] GetDependencies()
         {
-        }
-        private void OnDisable()
-        {
-            ModLogger.Info("Mod 即将禁用，配置已保存");
-            harmonyHelper.OnDisable();
+            return
+            [
+                "JmcModLib"
+            ];
         }
 
-        protected override void OnAfterSetup()
+        // 挂载实际业务脚本
+        protected override MonoBehaviour CreateImplementation(ModManager master, ModInfo info)
         {
-            ModRegistry.Register(true, info, VersionInfo.Name, VersionInfo.Version)?
-                       .RegisterL10n()
-                       .RegisterLogger(uIFlags: LogConfigUIFlags.All)
-                       .Done();
-            harmonyHelper.OnEnable();
-        }
+            // 1. 挂载组件
+            var impl = this.gameObject.AddComponent<ModBehaviourImpl>();
 
-        protected override void OnBeforeDeactivate()
-        {
-            ModLogger.Info("Mod 已禁用，配置已保存");
+            impl.Setup(master, info);
+
+            return impl;
         }
     }
 }

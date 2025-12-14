@@ -1,0 +1,51 @@
+﻿[h1]更多的比特币矿机 - More BTC Miner[/h1]
+
+[h2]功能[/h2]
+
+现在你可以制造更多比特币矿机了，默认增加两个，安装[url=https://steamcommunity.com/sharedfiles/filedetails/?id=3595729494]ModSetting[/url]后可在设置里调整矿机的上限，调节至0即为无上限。
+
+[h2]安全性[/h2]
+[list]
+[*] 在启用本 MOD 前，请先手动取出原本矿机中的卡，如果未取出，可停用此MOD后在原本矿机中找回。
+[*] 在卸载本 MOD 前，请先将所有矿机中的卡取出，如果未取出，可再次订阅后在原本矿机中找回。
+[*] 在拆除矿机前，请先将矿机中的卡取出，如果未取出，可将矿机放回在拆除点完全一样的地方恢复找回。
+[*] 本 MOD 不修改原本的任何存档内容，卸载后多余的矿机依旧存在，但是均指向同一个机器。
+[*] 如果你实在担心存档安全，可以订阅[url=https://steamcommunity.com/sharedfiles/filedetails/?id=3614076662]更好的存档位 - 复制粘贴 + 108 存档槽[/url]后快速复制粘贴存档备份尝试！
+[/list]
+
+[h2]安装[/h2]
+本 MOD 需要前置：  
+• [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3613297900]JmcModLib[/url]  
+• [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3589088839]Harmony[/url]  
+
+请务必将这两个前置放在本 MOD 前加载。
+
+如果需要游戏内修改矿机数量上限，请安装：  
+• [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3595729494]ModSetting[/url]
+如果不安装，也可以在存档目录下的/JmcModLibConfig/MoreBtcMiner.json中手动修改。
+
+
+[h2]相关链接[/h2]
+• [url=https://github.com/JMC2002/Duckov-MoreBtcMiner]Github 仓库[/url]  
+• [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3614940164&tscn=1764459600]创意工坊链接[/url]  
+
+[h2]已知问题[/h2]
+[list]
+[*] 新增已知问题（暂时不打算修复）：如果你在原地稍微挪动或者转向就能同时交互多台矿机，有概率开错，遇到这种情况就面朝希望打开的那台矿机尽量凑近即可
+[/list]
+
+[h2]我的其他 MOD [/h2]
+[list]
+[*] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3592004817]按重量/价值/价重比排序[/url] - 物品栏和仓库栏按重量/价值/价重比/稀有度/单价排序的 MOD。
+[*] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3600174953]更好的Mod菜单[/url] - 给Mod菜单增加了置顶/置底/全选/全不选/拖动排序/按键排序功能的 MOD。
+[*] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3614076662]更好的存档位 - 复制粘贴 + 108 存档槽[/url] - 可自定义存档槽数量并支持存档复制粘贴的 MOD。
+[*] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3614940164]更多的比特币矿机[/url] - 让你可以建造更多比特币矿机的 MOD。
+[*] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3613297900]JmcModLib[/url] - 一个开发工具前置库。
+[/list]
+
+[h2]其他[/h2]
+[list]
+[*] 本 MOD 内置游戏支持的所有语言的 `.csv` 文件，如果对翻译不满意，可自行修改 MOD 文件夹下 `Lang` 内的对应 `.csv`或者在评论区建议。
+[*] 如需反馈交流，可加群： [url=http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=Kii1sz9bmNmgEgnmsasbKn6h3etgSoQR]点击入群（617674584）[/url]
+[*] 如有问题或建议欢迎在讨论区留言；如果这个 MOD 对你有帮助，希望能点个 Star 和点赞支持！
+[/list]

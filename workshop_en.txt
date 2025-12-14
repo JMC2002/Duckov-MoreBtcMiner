@@ -1,0 +1,52 @@
+﻿[h1]More BTC Miner[/h1]
+
+[h2]Features[/h2]
+
+You can now build more Bitcoin miners. By default, two additional miners are added.  
+If you install [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3595729494]ModSetting[/url], you can adjust the miner limit in the settings.  
+Setting the limit to [b]0[/b] means [b]no limit[/b].
+
+[h2]Safety Notes[/h2]
+[list]
+[*] Before enabling this mod, please remove all cards from your original miners manually.  
+   If you forget to remove them, you can disable this mod and retrieve the cards from the original miners.
+[*] Before uninstalling this mod, please take all cards out of every miner.  
+   If you forget, you can resubscribe to this mod and retrieve them from the original miners.
+[*] Before dismantling a miner, make sure to remove the card inside.  
+   If you forgot, placing the miner back at the exact same position will restore the card.
+[*] This mod does NOT modify any save content.  
+   Excess miners will still exist after uninstalling, but all of them will point to the same original machine.
+[/list]
+
+[h2]Installation[/h2]
+
+This mod requires the following dependencies:  
+• [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3613297900]JmcModLib[/url]  
+• [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3589088839]Harmony[/url]  
+
+Please ensure these two mods load [b]before[/b] this mod.
+
+If you want to edit the miner limit in-game, please install:  
+• [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3595729494]ModSetting[/url]  
+
+If you don't install it, you can still manually edit the configuration file at:  
+`/JmcModLibConfig/MoreBtcMiner.json`
+
+[h2]Related Links[/h2]
+• [url=https://github.com/JMC2002/Duckov-MoreBtcMiner]GitHub Repository[/url]  
+• [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3614940164&tscn=1764459600]Steam Workshop Page[/url]
+
+[h2]Known Issues[/h2]
+[list]
+[*] (not planning to fix for now):  If you can interact with multiple miners at once by slightly moving or turning in place, there is a chance you may open the wrong one.  When this happens, simply face the miner you want to open and move as close to it as possible.
+[/list]
+
+[h2]Other Information[/h2]
+[list]
+[*] This mod includes `.csv` localization files for all languages supported by the game.  
+   If you are not satisfied with the translation, you may edit the `.csv` files under the mod's `Lang` folder, or leave a suggestion in the comments.
+[*] For discussion and feedback, you can join the group:  
+   [url=http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=Kii1sz9bmNmgEgnmsasbKn6h3etgSoQR]Join the Group (617674584)[/url]
+[*] If you have any questions or suggestions, feel free to post in the discussion section.  
+   If this mod is helpful to you, please consider giving it a Star and a Like!
+[/list]
