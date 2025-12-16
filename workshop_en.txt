@@ -22,9 +22,10 @@ Setting the limit to [b]0[/b] means [b]no limit[/b].
 
 This mod requires the following dependencies:  
 • [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3613297900]JmcModLib[/url]  
-• [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3589088839]Harmony[/url]  
 
-Please ensure these two mods load [b]before[/b] this mod.
+This mod is required for proper functionality, but there is no load-order dependency between them—both mods only need to be enabled.  
+If the dependency is not enabled or not subscribed, a popup reminder will appear. The popup behavior is based on the  
+[url=https://steamcommunity.com/sharedfiles/filedetails/?id=3624342813] Order-Independent Dependency Template[/url].
 
 If you want to edit the miner limit in-game, please install:  
 • [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3595729494]ModSetting[/url]  
